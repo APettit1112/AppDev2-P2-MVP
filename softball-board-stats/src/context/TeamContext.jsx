@@ -8,24 +8,28 @@ const samplePlayers = [
     id: '1',
     name: 'Anslie Pettit',
     position: 'Pitcher',
+    jerseyNumber: 52,
     stats: { gamesPlayed: 0, atBats: 0, hits: 0, homeRuns: 0 },
   },
   {
     id: '2',
     name: 'Hallee Bridge',
     position: 'Outfielder',
+    jerseyNumber: 17,
     stats: { gamesPlayed: 0, atBats: 0, hits: 0, homeRuns: 0 },
   },
   {
     id: '3',
     name: 'Shelibie Hutto',
     position: 'Catcher',
+    jerseyNumber: 3,
     stats: { gamesPlayed: 0, atBats: 0, hits: 0, homeRuns: 0 },
   },
   {
     id: '4',
     name: 'Emma Scott',
     position: 'First Base',
+    jerseyNumber: 9,
     stats: { gamesPlayed: 0, atBats: 0, hits: 0, homeRuns: 0 },
   },
 ]
