@@ -1,28 +1,15 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-
-const sampleConversations = {
-  1: {
-    name: 'Team Chat',
-    messages: [
-      { id: 1, sender: 'Coach', text: 'Practice starts at 5 PM today.' },
-      { id: 2, sender: 'Anslie Pettit', text: 'I will be there!' },
-    ],
-  },
-  2: {
-    name: 'Game Day Plans',
-    messages: [
-      { id: 1, sender: 'Coach', text: 'Please arrive 30 minutes early.' },
-      { id: 2, sender: 'Hallee Bridge', text: 'Got it. See everyone there.' },
-    ],
-  },
-}
+import { sampleConversations } from '../utilities/sampleConversations.js'
 
 function Conversation() {
   const { conversationId } = useParams()
   const conversation = sampleConversations[conversationId]
-  const [messages, setMessages] = useState(conversation?.messages ?? [])
+  const [conversationMessages, setConversationMessages] = useState({})
   const [messageText, setMessageText] = useState('')
+  const messages = conversation
+    ? (conversationMessages[conversationId] ?? conversation.messages)
+    : []
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -32,14 +19,13 @@ function Conversation() {
       return
     }
 
-    setMessages((currentMessages) => [
+    setConversationMessages((currentMessages) => ({
       ...currentMessages,
-      {
-        id: `${Date.now()}`,
-        sender: 'You',
-        text,
-      },
-    ])
+      [conversationId]: [
+        ...messages,
+        { id: `${Date.now()}`, sender: 'You', text },
+      ],
+    }))
     setMessageText('')
   }
 
@@ -58,7 +44,11 @@ function Conversation() {
         Back to messages
       </Link>
       <section className="conversation-card">
-        <h1>{conversation.name}</h1>
+        <header className="conversation-header">
+          <p className="dashboard-eyebrow">Team messages</p>
+          <h1>{conversation.name}</h1>
+          <p>{conversation.participants}</p>
+        </header>
         <ul className="conversation-messages" aria-live="polite">
           {messages.map((message) => (
             <li className="conversation-message" key={message.id}>
@@ -76,6 +66,7 @@ function Conversation() {
               value={messageText}
               onChange={(event) => setMessageText(event.target.value)}
               placeholder="Type your message"
+              autoComplete="off"
             />
             <button type="submit" disabled={!messageText.trim()}>
               Send
