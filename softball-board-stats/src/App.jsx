@@ -4,6 +4,7 @@ import { TeamProvider } from './context/TeamContext.jsx'
 import Conversation from './pages/Conversation.jsx'
 import Dashboard from './pages/Dashboard.jsx'
 import Messages from './pages/Messages.jsx'
+import NotFound from './pages/NotFound.jsx'
 import PlayerProfile from './pages/PlayerProfile.jsx'
 import Roster from './pages/Roster.jsx'
 import './App.css'
@@ -29,8 +30,7 @@ function App() {
               path="/messages/:conversationId"
               element={<Conversation />}
             />
-            {/* Send unknown URLs to a working page. */}
-            <Route path="*" element={<Navigate to="/dashboard" replace />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </BrowserRouter>
