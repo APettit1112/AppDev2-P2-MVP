@@ -3,6 +3,12 @@
   padding: 12px 20px;
 }
 
+.app-nav-title {
+  font-size: 24px;
+  letter-spacing: normal;
+  margin: 0 0 8px;
+}
+
 .app-nav-list {
   display: flex;
   justify-content: center;
