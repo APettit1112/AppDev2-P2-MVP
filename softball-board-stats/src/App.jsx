@@ -10,7 +10,9 @@ import './App.css'
 
 function App() {
   return (
+    // Share team data with every page and component.
     <TeamProvider>
+      {/* Keep routing inside the shared team context. */}
       <BrowserRouter>
         <div className="app">
           <Navigation />

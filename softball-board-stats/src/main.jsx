@@ -5,6 +5,7 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+    {/* Render the app with React's development checks enabled. */}
     <App />
   </StrictMode>,
 )
