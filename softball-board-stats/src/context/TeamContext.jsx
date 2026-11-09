@@ -6,24 +6,27 @@ const TeamContext = createContext(null)
 const samplePlayers = [
   {
     id: '1',
-    name: 'Jordan Lee',
+    name: 'Anslie Pettit',
     position: 'Pitcher',
-    jerseyNumber: 1,
-    stats: { gamesPlayed: 12, atBats: 30, hits: 11, homeRuns: 2 },
+    stats: { gamesPlayed: 0, atBats: 0, hits: 0, homeRuns: 0 },
   },
   {
     id: '2',
-    name: 'Casey Morgan',
-    position: 'Catcher',
-    jerseyNumber: 2,
-    stats: { gamesPlayed: 10, atBats: 24, hits: 8, homeRuns: 1 },
+    name: 'Hallee Bridge',
+    position: 'Outfielder',
+    stats: { gamesPlayed: 0, atBats: 0, hits: 0, homeRuns: 0 },
   },
   {
     id: '3',
-    name: 'Riley Carter',
-    position: 'Shortstop',
-    jerseyNumber: 7,
-    stats: { gamesPlayed: 11, atBats: 28, hits: 10, homeRuns: 3 },
+    name: 'Shelibie Hutto',
+    position: 'Catcher',
+    stats: { gamesPlayed: 0, atBats: 0, hits: 0, homeRuns: 0 },
+  },
+  {
+    id: '4',
+    name: 'Emma Scott',
+    position: 'First Base',
+    stats: { gamesPlayed: 0, atBats: 0, hits: 0, homeRuns: 0 },
   },
 ]
 

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import PlayerCard from '../components/PlayerCard.jsx'
 import { useTeam } from '../context/TeamContext.jsx'
 
 function Roster() {
@@ -9,32 +9,36 @@ function Roster() {
   const [searchText, setSearchText] = useState('')
   const searchTerm = searchText.trim().toLowerCase()
   const filteredPlayers = players.filter((player) =>
-    `${player.name} ${player.position} ${player.jerseyNumber}`
+    `${player.name} ${player.position}`
       .toLowerCase()
       .includes(searchTerm),
   )
 
   return (
-    <main>
-      <h1>Roster</h1>
-      <label htmlFor="player-search">Search players</label>
-      <input
-        id="player-search"
-        type="search"
-        value={searchText}
-        onChange={(event) => setSearchText(event.target.value)}
-        placeholder="Search by name, position, or number"
-      />
-      <ul>
-        {filteredPlayers.map((player) => (
-          <li key={player.id}>
-            <Link to={`/players/${player.id}`}>
-              #{player.jerseyNumber} {player.name} - {player.position}
-            </Link>
-          </li>
-        ))}
-      </ul>
-      {filteredPlayers.length === 0 && <p>No players found.</p>}
+    <main className="roster-page">
+      <header className="roster-header">
+        <h1>Roster</h1>
+        <p>{players.length} players on the team</p>
+      </header>
+      <div className="roster-search">
+        <label htmlFor="player-search">Search players</label>
+        <input
+          id="player-search"
+          type="search"
+          value={searchText}
+          onChange={(event) => setSearchText(event.target.value)}
+          placeholder="Search by name or position"
+        />
+      </div>
+      {filteredPlayers.length > 0 ? (
+        <section className="player-grid" aria-label="Team roster">
+          {filteredPlayers.map((player) => (
+            <PlayerCard key={player.id} player={player} />
+          ))}
+        </section>
+      ) : (
+        <p role="status">No players found.</p>
+      )}
     </main>
   )
 }

@@ -107,6 +107,73 @@
   font-weight: 600;
 }
 
+.roster-page {
+  width: min(100% - 32px, 900px);
+  margin: 0 auto;
+  padding: 32px 0;
+  text-align: left;
+}
+
+.roster-header {
+  margin-bottom: 24px;
+}
+
+.roster-header h1 {
+  font-size: clamp(32px, 6vw, 48px);
+  letter-spacing: -1px;
+  margin: 0 0 8px;
+}
+
+.roster-search {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 20px;
+  max-width: 420px;
+}
+
+.roster-search input {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font: inherit;
+  padding: 10px 12px;
+  width: 100%;
+}
+
+.player-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+}
+
+.player-card {
+  background: var(--social-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transition: box-shadow 0.2s;
+}
+
+.player-card:hover {
+  box-shadow: var(--shadow);
+}
+
+.player-card-link {
+  color: inherit;
+  display: block;
+  padding: 20px;
+  text-decoration: none;
+}
+
+.player-card-link:focus-visible {
+  border-radius: 10px;
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.player-card h2 {
+  font-size: 20px;
+  margin: 0 0 8px;
+}
+
 @media (max-width: 600px) {
   .dashboard-stats {
     grid-template-columns: 1fr;
